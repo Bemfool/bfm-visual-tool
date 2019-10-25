@@ -3,7 +3,7 @@
 
 #define USE_QT
 
-static std::string bfm_path = "D:\\database\\bfm\\2009\\PublicMM1\\";
+static std::string bfm_path = ".\\data\\";
 
 /* Text Format Data (deprecated) */
 static std::string shape_mu_path_text = bfm_path + "shapeMU.dat";

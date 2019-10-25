@@ -34,6 +34,9 @@
     <Filter Include="Header Files\bfm_utils">
       <UniqueIdentifier>{3b2f48ab-e426-4a03-8770-59e185a22d09}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource Files\data">
+      <UniqueIdentifier>{c4288149-f1a2-4e1c-a7bc-c76f3ddcec08}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -108,5 +111,28 @@
     <ResourceCompile Include="bfm_tool.rc">
       <Filter>Resource Files</Filter>
     </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="data\tl.bin">
+      <Filter>Resource Files\data</Filter>
+    </None>
+    <None Include="data\texPC.bin">
+      <Filter>Resource Files\data</Filter>
+    </None>
+    <None Include="data\texMU.bin">
+      <Filter>Resource Files\data</Filter>
+    </None>
+    <None Include="data\texEV.bin">
+      <Filter>Resource Files\data</Filter>
+    </None>
+    <None Include="data\shapePC.bin">
+      <Filter>Resource Files\data</Filter>
+    </None>
+    <None Include="data\shapeMU.bin">
+      <Filter>Resource Files\data</Filter>
+    </None>
+    <None Include="data\shapeEV.bin">
+      <Filter>Resource Files\data</Filter>
+    </None>
   </ItemGroup>
 </Project>

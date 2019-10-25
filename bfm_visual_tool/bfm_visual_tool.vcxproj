@@ -147,6 +147,15 @@
   <ItemGroup>
     <ResourceCompile Include="bfm_tool.rc" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="data\shapeEV.bin" />
+    <None Include="data\shapeMU.bin" />
+    <None Include="data\shapePC.bin" />
+    <None Include="data\texEV.bin" />
+    <None Include="data\texMU.bin" />
+    <None Include="data\texPC.bin" />
+    <None Include="data\tl.bin" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
     <Import Project="$(QtMsBuild)\qt.targets" />
