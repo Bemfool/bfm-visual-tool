@@ -4,8 +4,10 @@
 #include <QOpenGLFunctions>
 #include <GL/gl.h>
 #include <GL/glu.h>
-#include "vec3.h"
 #include <qdebug.h>
+#include "bfm.h"
+
+class vec3;
 
 class OpenGLWidget : public QOpenGLWidget, protected QOpenGLFunctions
 {
@@ -18,8 +20,5 @@ public:
 	void initializeGL() Q_DECL_OVERRIDE;
 	void paintGL() Q_DECL_OVERRIDE;
 	void resizeGL(int w, int h) Q_DECL_OVERRIDE;
-	std::vector<vec3> shape;
-	std::vector<vec3> tex;
-	std::vector<vec3> tl;
 	bool needUpdate = true;
 };

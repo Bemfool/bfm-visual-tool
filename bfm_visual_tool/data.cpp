@@ -1,12 +1,18 @@
 ﻿#include "data.h"
 
-vector<vec3> shape_mu(N_VERTICE);
-vector<double> shape_ev(N_PC);
-vector<vector<vec3>> shape_pc(N_PC);
-vector<vec3> tex_mu(N_VERTICE);
-vector<double> tex_ev(N_PC);
-vector<vector<vec3>> tex_pc(N_PC);
-vector<vec3> tl(N_FACE);
+std::vector<double> alpha;
+std::vector<double> beta;
+
+std::vector<vec3> shape_mu(N_VERTICE);
+std::vector<double> shape_ev(N_PC);
+std::vector<std::vector<vec3>> shape_pc(N_PC);
+std::vector<vec3> tex_mu(N_VERTICE);
+std::vector<double> tex_ev(N_PC);
+std::vector<std::vector<vec3>> tex_pc(N_PC);
+std::vector<vec3> tl(N_FACE);
+
+std::vector<vec3> shape;
+std::vector<vec3> tex;
 
 int load(d_type type) {
 #ifndef USE_QT

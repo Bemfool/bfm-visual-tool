@@ -6,12 +6,14 @@
 #include <qpushbutton.h>
 #include <qlabel.h>
 #include "bfm.h"
-#include "MyDialog.h"
+#include <qcombobox.h>
 #include "OpenGLWidget.h"
+#include <qstatusbar.h>
 
 class QSlider;
 class QPushButton;
 class QLabel;
+class QComboBox;
 class QOpenGLWidget;
 
 class MainWindow : public QMainWindow
@@ -23,15 +25,30 @@ public:
 
 private slots: 
 	void generateRandomFace();
+	void synShapeSlider();
+	void synTexSlider();
+	void setShapePc();
+	void setTexPc();
 	void savePly();
 
 private:
 	Ui::MainWindowClass ui;
+	
 	OpenGLWidget *openGLWidget;
 	QPushButton *genRndFaceBtn;
 	QPushButton *savePlyBtn;
-	QSlider		*rndRangeSlider;
-	QLabel		*rndRangeLabel;
+	QPushButton *setShapePcBtn;
+	QPushButton *setTexPcBtn;
+	
+	QSlider *shapeSlider;
+	QSlider *texSlider;
+	QSlider	*rndRangeSlider;
+
+	QComboBox *shapeComboBox;
+	QComboBox *texComboBox;
+
+	QTextEdit *saveFilename;
+
 	void initUI();
 	void initSignalSlots();
 };

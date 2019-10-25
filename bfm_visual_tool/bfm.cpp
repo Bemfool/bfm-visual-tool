@@ -28,24 +28,50 @@ bool init_bfm(d_type type) {
 }
 
 
-void generate_random_face(std::vector<vec3> &shape, std::vector<vec3> &tex, double scale) {
+void generate_random_face(double scale) {
+#ifdef USE_QT
+	qDebug("generate random face\n	generate random sequence - ");
+#else
 	cout << "generate random face" << endl;
 	cout << "	generate random sequence - ";
-	vector<double> alpha = randn(N_PC, scale);
-	vector<double> beta = randn(N_PC, scale);
+#endif
+	alpha = randn(N_PC, scale);
+	beta = randn(N_PC, scale);
+#ifdef USE_QT
+	qDebug("success");
+#else
 	cout << "success" << endl;
-
-	cout << "	pca - ";
-	shape = coef2object(alpha, shape_mu, shape_pc, shape_ev);
-	tex = coef2object(beta, tex_mu, tex_pc, tex_ev);
-	cout << "success" << endl;
+#endif
+	generate_face();
 }
 
-
-void save_ply(string filename, const std::vector<vec3> &shape, const std::vector<vec3> &tex) {
-	cout << "	write into .ply file - ";
-	ply_write("random_face.ply", shape, tex, tl);
+void generate_face() {
+#ifdef USE_QT
+	qDebug("	pca - ");
+#else
+	cout << "	pca - ";
+#endif
+	shape = coef2object(alpha, shape_mu, shape_pc, shape_ev);
+	tex = coef2object(beta, tex_mu, tex_pc, tex_ev);
+#ifdef USE_QT
+	qDebug("success");
+#else
 	cout << "success" << endl;
+#endif
+}
+
+void save_ply(string filename) {
+#ifdef USE_QT
+	qDebug("	write into .ply file - ");
+#else
+	cout << "	write into .ply file - ";
+#endif
+	ply_write("rnd_face.ply");
+#ifdef USE_QT
+	qDebug("success");
+#else
+	cout << "success" << endl;
+#endif
 }
 
 
@@ -54,7 +80,7 @@ vector<vec3> coef2object(vector<double> &coef, vector<vec3> &mu, vector<vector<v
 	return mu + pc * temp;
 }
 
-void ply_write(string fn, vector<vec3> shape, vector<vec3> tex, vector<vec3> tl) {
+void ply_write(string fn) {
 	ofstream out;
 	out.open(fn, std::ios::binary);
 	if (!out) {
@@ -93,10 +119,9 @@ void ply_write(string fn, vector<vec3> shape, vector<vec3> tex, vector<vec3> tl)
 	unsigned char N_VER_PER_FACE = 3;
 	for (int i = 0; i < N_FACE; i++) {
 		out.write((char *)&N_VER_PER_FACE, sizeof(N_VER_PER_FACE));
-		tl[i] = tl[i] - 1;
-		int x = tl[i].x;
-		int y = tl[i].y;
-		int z = tl[i].z;
+		int x = tl[i].x - 1;
+		int y = tl[i].y - 1;
+		int z = tl[i].z - 1;
 		out.write((char *)&y, sizeof(y));
 		out.write((char *)&x, sizeof(x));
 		out.write((char *)&z, sizeof(z));

@@ -11,7 +11,6 @@
 #include <QVBoxLayout>
 #endif 
 
-
 using namespace std;
 
 #ifdef USE_QT

@@ -45,9 +45,6 @@
     <ClCompile Include="MainWindow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MyDialog.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="OpenGLWidget.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -65,18 +62,12 @@
     <QtMoc Include="MainWindow.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="MyDialog.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
     <QtMoc Include="OpenGLWidget.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="MainWindow.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
-    <QtUic Include="MyDialog.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>

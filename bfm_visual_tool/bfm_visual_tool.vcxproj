@@ -118,7 +118,6 @@
     <ClCompile Include="data.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainWindow.cpp" />
-    <ClCompile Include="MyDialog.cpp" />
     <ClCompile Include="OpenGLWidget.cpp" />
     <ClCompile Include="random.cpp" />
   </ItemGroup>
@@ -127,7 +126,6 @@
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="MainWindow.ui" />
-    <QtUic Include="MyDialog.ui" />
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="MainWindow.qrc" />
@@ -136,7 +134,6 @@
     <ClInclude Include="bfm.h" />
     <ClInclude Include="constant.h" />
     <ClInclude Include="data.h" />
-    <QtMoc Include="MyDialog.h" />
     <QtMoc Include="OpenGLWidget.h" />
     <ClInclude Include="random.h" />
     <ClInclude Include="vec3.h" />
