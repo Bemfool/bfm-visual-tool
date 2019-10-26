@@ -20,7 +20,7 @@ void OpenGLWidget::resizeGL(int width, int height)
 	glViewport(0, 0, width, height);
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
-	gluPerspective(60.0, (GLfloat)width / (GLfloat)height, 1.0, 400000.0);
+	gluPerspective(60.0, (GLfloat)width / (GLfloat)height, 1.0, 600000.0);
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 	gluLookAt(0, 0, 300000.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
@@ -28,33 +28,59 @@ void OpenGLWidget::resizeGL(int width, int height)
 
 void OpenGLWidget::paintGL()
 {
-	double scale = 1.0;
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	if (!shape.empty()) {
 		int count = 0;
+		double sint = sin(theta), cost = cos(theta);
 		for (auto t = tl.begin(); t != tl.end(); t++) {
 			glBegin(GL_TRIANGLES);
 			vec3 tmp = *t - 1;
 			glColor3f(tex[tmp.x].x / 255.0, tex[tmp.x].y / 255.0, tex[tmp.x].z / 255.0);
-			glVertex3f(shape[tmp.x].x * scale, shape[tmp.x].y * scale, shape[tmp.x].z * scale);
+			glVertex3f(shape[tmp.x].x * scale * cost - shape[tmp.x].z * scale * sint, shape[tmp.x].y * scale, shape[tmp.x].x * scale * sint + shape[tmp.x].z * scale * cost);
 			glColor3f(tex[tmp.y].x / 255.0, tex[tmp.y].y / 255.0, tex[tmp.y].z / 255.0);
-			glVertex3f(shape[tmp.y].x * scale, shape[tmp.y].y * scale, shape[tmp.y].z * scale);
+			glVertex3f(shape[tmp.y].x * scale * cost - shape[tmp.y].z * scale * sint, shape[tmp.y].y * scale, shape[tmp.y].x * scale * sint + shape[tmp.y].z * scale * cost);
 			glColor3f(tex[tmp.z].x / 255.0, tex[tmp.z].y / 255.0, tex[tmp.z].z / 255.0);
-			glVertex3f(shape[tmp.z].x * scale, shape[tmp.z].y * scale, shape[tmp.z].z * scale);
+			glVertex3f(shape[tmp.z].x * scale * cost - shape[tmp.z].z * scale * sint, shape[tmp.z].y * scale, shape[tmp.z].x * scale * sint + shape[tmp.z].z * scale * cost);
 			count++;
-			qDebug("%d %lf %lf %lf\n", count, tex[tmp.z].x, tex[tmp.z].y, tex[tmp.z].z);
-			qDebug("%d %lf %lf %lf\n", count, shape[tmp.z].x, shape[tmp.z].y, shape[tmp.z].z);
+			// qDebug("%d %lf %lf %lf\n", count, tex[tmp.z].x, tex[tmp.z].y, tex[tmp.z].z);
+			// qDebug("%d %lf %lf %lf\n", count, shape[tmp.z].x, shape[tmp.z].y, shape[tmp.z].z);
 			glEnd();
 		}
 	}
 	else {
 		glBegin(GL_TRIANGLES);
 		glColor3f(1.0, 0.0, 0.0);
-		glVertex3f(-50000, 0, 0);
+		glVertex3f(-50000 * cos(theta) * scale, 0, 0);
 		glColor3f(0.0, 1.0, 0.0);
-		glVertex3f(50000, 0, 0);
+		glVertex3f(50000 * cos(theta) * scale, 0, 0);
 		glColor3f(0.0, 0.0, 1.0);
-		glVertex3f(0.0, 50000, 0);
+		glVertex3f(0.0, 50000 * scale, 0);
 		glEnd();
+	}
+}
+
+void OpenGLWidget::mousePressEvent(QMouseEvent *event) {
+	if (event->button() == Qt::LeftButton)
+		oldX = event->x();
+}
+
+
+void OpenGLWidget::mouseMoveEvent(QMouseEvent *event) {
+	if (event->buttons() & Qt::LeftButton) {
+		double clockwise;
+		if (event->x() < oldX) {
+			clockwise = -1.0;
+			qDebug() << "left" << endl;
+		}
+		else if (event->x() > oldX) {
+			clockwise = 1.0;
+			qDebug() << "right" << endl;
+		}
+		else
+			clockwise = 0;
+
+		oldX = event->x();
+		theta += clockwise * 0.1;
+		update();
 	}
 }

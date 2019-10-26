@@ -1,0 +1,10 @@
+function bfm_mat2binary(bfm_model)
+    load(bfm_model)
+    mat2binary('shapeEV.bin', shapeEV, 'single')
+    mat2binary('shapeMU.bin', shapeMU, 'single')
+    mat2binary('shapePC.bin', shapePC, 'single')
+    mat2binary('texEV.bin', texEV, 'single')
+    mat2binary('texMU.bin', texMU, 'single')
+    mat2binary('texPC.bin', texPC, 'single')
+    mat2binary('tl.bin', tl, 'double')
+end

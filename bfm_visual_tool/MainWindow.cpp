@@ -53,6 +53,8 @@ void MainWindow::generateRandomFace()
 {
 	statusBar()->showMessage("generating...", 3000);
 	generate_random_face(rndRangeSlider->value() / SLIDER_SCALE);
+	openGLWidget->theta = 0.0;
+	openGLWidget->scale = 1.0;
 	openGLWidget->update();
 	synShapeSlider();
 	synTexSlider();
@@ -129,4 +131,32 @@ void MainWindow::savePly()
 	QLabel *label = new QLabel(dialog);
 	label->setText("save - success");
 	dialog->exec();
+}
+
+void MainWindow::keyPressEvent(QKeyEvent *event) {
+	switch (event->key()) {
+	case Qt::Key_A:
+		openGLWidget->theta += 0.1;
+		break;
+	case Qt::Key_D:
+		openGLWidget->theta -= 0.1;
+		break;
+	case Qt::Key_W:
+		openGLWidget->scale += 0.1;
+		break;
+	case Qt::Key_S:
+		openGLWidget->scale -= 0.1;
+		break;
+	default:
+		break;
+	}
+	openGLWidget->update();
+}
+
+
+void MainWindow::wheelEvent(QWheelEvent *event) {
+	openGLWidget->scale += event->delta() / 1200.0;
+	if (openGLWidget->scale <= 0.0)
+		openGLWidget->scale = 0.01;
+	openGLWidget->update();
 }

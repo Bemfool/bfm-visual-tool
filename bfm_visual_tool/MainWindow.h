@@ -15,6 +15,8 @@ class QPushButton;
 class QLabel;
 class QComboBox;
 class QOpenGLWidget;
+class QKeyEvent;
+class QWheelEvent;
 
 class MainWindow : public QMainWindow
 {
@@ -22,6 +24,9 @@ class MainWindow : public QMainWindow
 
 public:
 	MainWindow(QWidget *parent = Q_NULLPTR);
+
+	void keyPressEvent(QKeyEvent *event);
+	void wheelEvent(QWheelEvent *event);
 
 private slots: 
 	void generateRandomFace();
