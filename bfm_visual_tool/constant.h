@@ -2,6 +2,7 @@
 #include <string>
 
 #define USE_QT
+#define USE_HDF5
 
 static std::string bfm_path = ".\\data\\";
 
@@ -23,18 +24,26 @@ static std::string tex_ev_path_bin   = bfm_path + "texEV.bin";
 static std::string tex_pc_path_bin   = bfm_path + "texPC.bin";
 static std::string tl_path_bin	     = bfm_path + "tl.bin";
 
+/* HDF5 Format Data */
+static std::string bfm_h5_path = bfm_path + "model2009-publicmm1-bfm.h5";
+
 #define N_VERTICE	53490
 #define N_FACE		106466
+#define N_FACE_HDF5 106333
 #define N_PC		199
 
 #define FAIL	 -1
 #define SUCCESS 0
 
 typedef int d_type;
-#define BINARY_DATA	0
-#define TEXT_DATA	1
-#define FLOAT_DATA  2
-#define DOUBLE_DATA 3
-#define VEC3_DATA   4
+enum {
+	BINARY_DATA = 0,
+	TEXT_DATA   = 1,
+	FLOAT_DATA  = 2,
+	DOUBLE_DATA = 3,
+	VEC3_DATA   = 4,
+	HDF5_DATA   = 5,
+};
+
 
 inline void set_bfm_path(std::string new_path) { bfm_path = new_path; }

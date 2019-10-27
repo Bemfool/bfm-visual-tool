@@ -3,7 +3,6 @@
 double SLIDER_STEP = 0.01;
 double SLIDER_SCALE = 1.0 / SLIDER_STEP;
 
-
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 {
 	ui.setupUi(this);

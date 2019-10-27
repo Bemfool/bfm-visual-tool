@@ -53,6 +53,13 @@ void generate_face() {
 #endif
 	shape = coef2object(alpha, shape_mu, shape_pc, shape_ev);
 	tex = coef2object(beta, tex_mu, tex_pc, tex_ev);
+
+	//for (int i = 0; i < N_VERTICE; i++)
+	//	qDebug() << shape[i].x << " " << shape[i].y << " " << shape[i].z << endl;
+	//for (int i = 0; i < N_VERTICE; i++)
+	//	qDebug() << tex[i].x << " " << tex[i].y << " " << tex[i].z << endl;
+
+
 #ifdef USE_QT
 	qDebug("success");
 #else

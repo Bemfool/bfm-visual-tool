@@ -1,14 +1,21 @@
 #pragma once
+/*********************************************************************
+
+Author: Bemfoo
+Date: 2019-10-26
+Description: The main widget window of Basel face model visual tool.
+
+**********************************************************************/
 
 #include <QtWidgets/QMainWindow>
 #include "ui_MainWindow.h"
 #include <qslider.h>
 #include <qpushbutton.h>
 #include <qlabel.h>
-#include "bfm.h"
 #include <qcombobox.h>
-#include "OpenGLWidget.h"
 #include <qstatusbar.h>
+#include "OpenGLWidget.h"
+#include "bfm.h"
 
 class QSlider;
 class QPushButton;

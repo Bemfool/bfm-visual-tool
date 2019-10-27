@@ -5,13 +5,30 @@
 #include "vec3.h"
 #include "constant.h"
 #ifdef USE_QT
+#include <qdebug.h>
 #include <qdialog.h>
 #include <qlabel.h>
 #include <qpushbutton.h>
 #include <QVBoxLayout>
 #endif 
+#ifdef USE_HDF5
+#include "H5Cpp.h"
+#include "hdf5.h"
+using namespace H5;
+#endif
 
 using namespace std;
+
+class QDebug;
+
+#ifdef USE_HDF5
+#define load_hdf5_model(model_type, dataset_path, data_type) { \
+			DataSet model_type##_data = file.openDataSet(dataset_path); \
+			model_type##_data.read(model_type##_raw, data_type); \
+			model_type##_data.close(); \
+			raw2vector(model_type, model_type##_raw); \
+		} 
+#endif
 
 #ifdef USE_QT
 #define load_vec3_model(model_type, data_type) { \
@@ -231,5 +248,9 @@ using namespace std;
 }
 #endif
 
+void raw2vector(std::vector<double> &vec, float *raw);
+void raw2vector(std::vector<vec3> &vec, float *raw);
+void raw2vector(std::vector<vec3> &vec, unsigned int *raw);
+void raw2vector(std::vector<std::vector<vec3>> &vec, float *raw);
 int load(d_type type);
 void data_check();

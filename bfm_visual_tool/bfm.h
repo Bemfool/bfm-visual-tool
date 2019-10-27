@@ -24,7 +24,7 @@ extern std::vector<vec3> shape;
 extern std::vector<vec3> tex;
 
 /* For Users */
-bool init_bfm(d_type type = BINARY_DATA);
+bool init_bfm(d_type type = HDF5_DATA);
 void generate_random_face(double scale = 1.0);
 void generate_face();
 void save_ply(string filename);
