@@ -7,7 +7,24 @@
 
 ## 数据准备
 
-下载好BFM模型（2009年版本的01_MorphableModel.mat文件）后，通过Matlab脚本（提供于./matlab_utils目录下）将其转换成二进制文件用于读写。
+支持三种数据类型：二进制，文本，以及HDF5文件格式。
+
+修改数据格式方式：
+
+```c++
+bfm_init();
+// bfm_init(HDF5_DATA);
+// bfm_init(BINARY_DATA);
+// bfm_init(TEXT_DATA);
+```
+
+### HDF5格式（默认）
+
+下载好BFM模型，将`model2009-publicmm1-bfm.h5`文件放置到`./data`文件夹中。
+
+### 二进制格式
+
+下载好BFM模型（2009年版本的`01_MorphableModel.mat`文件）后，通过`Matlab`脚本（提供于`./matlab_utils`目录下）将其转换成二进制文件用于读写。
 
 ```
 function bfm_mat2binary(bfm_model)
@@ -26,9 +43,11 @@ end
 
 或者可以直接下载Release页面中的data.zip文件，解压到./data目录下。
 
-*[NOTE] 如果生成文本文件也可以，但读写速度和数据大小将翻倍，需要修改代码中的bfm_init函数的参数方可使用。*
+*[NOTE] Release的v1.0版本使用的是二进制格式数据，其中bfm_visual_tool_with_data.exe自带数据，bfm_visual_tool_no_data.exe需要按上述步骤准备数据。*
 
-*[NOTE] Release页面中bfm_visual_tool_with_data.exe自带数据，bfm_visual_tool_no_data.exe需要按上述步骤准备数据。*
+### 文本格式
+
+在`./matlab_utils` 中有脚本支持，但使用文本格式读写速度影响较大，不建议使用。
 
 
 
