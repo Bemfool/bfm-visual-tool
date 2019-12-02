@@ -57,6 +57,9 @@
     <ClCompile Include="random.cpp">
       <Filter>Source Files\bfm_utils</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Software\dlib\dlib-19.17\dlib-19.17\dlib\all\source.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="MainWindow.h">

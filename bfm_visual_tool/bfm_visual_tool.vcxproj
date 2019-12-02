@@ -34,8 +34,9 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
-    <IncludePath>D:\Software\hdf5\include;$(IncludePath)</IncludePath>
-    <LibraryPath>D:\Software\hdf5\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>D:\Software\hdf5\include;$(IncludePath);D:\Software\dlib\dlib-19.17\dlib-19.17;D:\Software\OpenCV3\opencv\build\include\opencv2;D:\Software\OpenCV3\opencv\build\include;D:\Software\OpenCV3\opencv\build\include\opencv;</IncludePath>
+    <LibraryPath>D:\Software\hdf5\lib;$(LibraryPath);D:\Software\dlib\dlib-19.17\dlib-19.17;D:\Software\OpenCV3\opencv\build\x64\vc14\lib;</LibraryPath>
+    <ReferencePath>$(VC_ReferencesPath_x64);D:\Software\dlib\dlib-19.17\dlib-19.17;</ReferencePath>
   </PropertyGroup>
   <Target Name="QtMsBuildNotFound" BeforeTargets="CustomBuild;ClCompile" Condition="!Exists('$(QtMsBuild)\qt.targets') or !Exists('$(QtMsBuild)\qt.props')">
     <Message Importance="High" Text="QtMsBuild: could not locate qt.targets, qt.props; project may not build correctly." />
@@ -92,13 +93,14 @@
       <DebugInformationFormat />
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <AdditionalOptions>/bigobj %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <OutputFile>$(OutDir)\$(ProjectName).exe</OutputFile>
-      <AdditionalLibraryDirectories>$(QTDIR)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(QTDIR)\lib;%(AdditionalLibraryDirectories);;D:\Software\dlib\build\Debug</AdditionalLibraryDirectories>
       <GenerateDebugInformation>false</GenerateDebugInformation>
-      <AdditionalDependencies>qtmain.lib;Qt5Core.lib;Qt5Gui.lib;Qt5OpenGL.lib;opengl32.lib;glu32.lib;Qt5OpenGLExtensions.lib;Qt5Widgets.lib;%(AdditionalDependencies);szip.lib;zlib.lib;hdf5.lib;hdf5_cpp.lib;</AdditionalDependencies>
+      <AdditionalDependencies>qtmain.lib;Qt5Core.lib;Qt5Gui.lib;Qt5OpenGL.lib;opengl32.lib;glu32.lib;Qt5OpenGLExtensions.lib;Qt5Widgets.lib;%(AdditionalDependencies);szip.lib;zlib.lib;hdf5.lib;hdf5_cpp.lib;dlib.lib;opencv_world320d.lib;</AdditionalDependencies>
     </Link>
     <QtMoc>
       <OutputFile>.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</OutputFile>
@@ -116,6 +118,7 @@
     </QtRcc>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Software\dlib\dlib-19.17\dlib-19.17\dlib\all\source.cpp" />
     <ClCompile Include="bfm.cpp" />
     <ClCompile Include="data.cpp" />
     <ClCompile Include="main.cpp" />
