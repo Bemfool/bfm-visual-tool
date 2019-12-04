@@ -1,5 +1,5 @@
 #include "OpenGLWidget.h"
-
+#include "MainWindow.h"
 
 OpenGLWidget::OpenGLWidget(QWidget *parent) : QOpenGLWidget(parent) {}
 
@@ -32,27 +32,25 @@ void OpenGLWidget::resizeGL(int width, int height)
 
 void OpenGLWidget::paintGL()
 {
+	MainWindow *p = (MainWindow*)(parentWidget()->parentWidget());
+	shape = p->getModel().get_current_blendshape();
+	tex = p->getModel().get_current_tex();
+	tl = p->getModel().get_tl();
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	if (!shape.empty()) {
+	if (shape.nr()!=0) {
 		/* human face model */
-#ifdef DEBUG
-		int count = 0;
-#endif
 		double sint = sin(theta), cost = cos(theta);
-		for (auto t = tl.begin(); t != tl.end(); t++) {
+		for (int i = 0; i < tl.size()/3; i++) {
 			glBegin(GL_TRIANGLES);
-			vec3 tmp = *t;
-			glColor3f(tex[tmp.x].x / 255.0, tex[tmp.x].y / 255.0, tex[tmp.x].z / 255.0);
-			glVertex3f(shape[tmp.x].x * scale * cost - shape[tmp.x].z * scale * sint, shape[tmp.x].y * scale, shape[tmp.x].x * scale * sint + shape[tmp.x].z * scale * cost);
-			glColor3f(tex[tmp.y].x / 255.0, tex[tmp.y].y / 255.0, tex[tmp.y].z / 255.0);
-			glVertex3f(shape[tmp.y].x * scale * cost - shape[tmp.y].z * scale * sint, shape[tmp.y].y * scale, shape[tmp.y].x * scale * sint + shape[tmp.y].z * scale * cost);
-			glColor3f(tex[tmp.z].x / 255.0, tex[tmp.z].y / 255.0, tex[tmp.z].z / 255.0);
-			glVertex3f(shape[tmp.z].x * scale * cost - shape[tmp.z].z * scale * sint, shape[tmp.z].y * scale, shape[tmp.z].x * scale * sint + shape[tmp.z].z * scale * cost);
-#ifdef DEBUG
-			 count++;
-			 qDebug("%d %lf %lf %lf\n", count, tex[tmp.z].x, tex[tmp.z].y, tex[tmp.z].z);
-			 qDebug("%d %lf %lf %lf\n", count, shape[tmp.z].x, shape[tmp.z].y, shape[tmp.z].z);
-#endif
+			double xIdx = tl(i * 3) - 1;
+			double yIdx = tl(i * 3 + 1) - 1;
+			double zIdx = tl(i * 3 + 2) - 1;
+			glColor3f(tex(xIdx * 3) / 255.0, tex(xIdx * 3 + 1) / 255.0, tex(xIdx * 3 + 2) / 255.0);
+			glVertex3f(shape(xIdx * 3) * scale * cost - shape(xIdx * 3 + 2) * scale * sint, shape(xIdx * 3 + 1) * scale, shape(xIdx * 3) * scale * sint + shape(xIdx * 3 + 2) * scale * cost);
+			glColor3f(tex(yIdx * 3) / 255.0, tex(yIdx * 3 + 1) / 255.0, tex(yIdx * 3 + 2) / 255.0);
+			glVertex3f(shape(yIdx * 3) * scale * cost - shape(yIdx * 3 + 2) * scale * sint, shape(yIdx * 3 + 1) * scale, shape(yIdx * 3) * scale * sint + shape(yIdx * 3 + 2) * scale * cost);
+			glColor3f(tex(zIdx * 3) / 255.0, tex(zIdx * 3 + 1) / 255.0, tex(zIdx * 3 + 2) / 255.0);
+			glVertex3f(shape(zIdx * 3) * scale * cost - shape(zIdx * 3 + 2) * scale * sint, shape(zIdx * 3 + 1) * scale, shape(zIdx * 3) * scale * sint + shape(zIdx * 3 + 2) * scale * cost);
 			glEnd();
 		}
 	}

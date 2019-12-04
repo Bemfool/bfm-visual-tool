@@ -1,6 +1,6 @@
 ﻿#pragma once
-#include <dlib/image_io.h>
-#include <dlib/opencv.h>
+#include <dlib/matrix.h>
+#include <dlib/geometry.h>
 
 /* Definition of 3d coordinate, because dlib only support dlib::point, which is 2d */
 typedef dlib::vector<double, 3> point3f;

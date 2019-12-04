@@ -30,7 +30,7 @@ using namespace std;
 
 template<typename T>
 void raw2matrix(dlib::matrix<double> &m, T *raw) {
-	std::cout << "check: " << m.nr() << " " << m.nc() << std::endl;
+	bfm_out << "check: " << m.nr() << " " << m.nc() << "\n";
 	for (int i = 0; i < m.nr(); i++)
 		for (int j = 0; j < m.nc(); j++)
 			m(i, j) = raw[i * m.nc() + j];

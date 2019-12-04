@@ -34,8 +34,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
-    <IncludePath>D:\Software\hdf5\include;$(IncludePath);D:\Software\dlib\dlib-19.17\dlib-19.17;D:\Software\OpenCV3\opencv\build\include\opencv2;D:\Software\OpenCV3\opencv\build\include;D:\Software\OpenCV3\opencv\build\include\opencv;</IncludePath>
-    <LibraryPath>D:\Software\hdf5\lib;$(LibraryPath);D:\Software\dlib\dlib-19.17\dlib-19.17;D:\Software\OpenCV3\opencv\build\x64\vc14\lib;</LibraryPath>
+    <IncludePath>D:\Software\hdf5\CMake-hdf5-1.10.5\CMake-hdf5-1.10.5\HDF5-1.10.5-win64\include;$(IncludePath);D:\Software\dlib\dlib-19.17\dlib-19.17;D:\Software\OpenCV3\opencv\build\include\opencv2;D:\Software\OpenCV3\opencv\build\include;D:\Software\OpenCV3\opencv\build\include\opencv</IncludePath>
+    <LibraryPath>D:\Software\hdf5\CMake-hdf5-1.10.5\CMake-hdf5-1.10.5\HDF5-1.10.5-win64\lib;$(LibraryPath);D:\Software\dlib\dlib-19.17\dlib-19.17;D:\Software\OpenCV3\opencv\build\x64\vc14\lib</LibraryPath>
     <ReferencePath>$(VC_ReferencesPath_x64);D:\Software\dlib\dlib-19.17\dlib-19.17;</ReferencePath>
   </PropertyGroup>
   <Target Name="QtMsBuildNotFound" BeforeTargets="CustomBuild;ClCompile" Condition="!Exists('$(QtMsBuild)\qt.targets') or !Exists('$(QtMsBuild)\qt.props')">
@@ -88,7 +88,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <PreprocessorDefinitions>UNICODE;_UNICODE;WIN32;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;QT_DLL;QT_NO_DEBUG;NDEBUG;QT_CORE_LIB;QT_GUI_LIB;QT_OPENGL_LIB;QT_OPENGLEXTENSIONS_LIB;QT_WIDGETS_LIB;%(PreprocessorDefinitions);H5_BUILT_AS_DYNAMIC_LIB</PreprocessorDefinitions>
+      <PreprocessorDefinitions>UNICODE;_UNICODE;WIN32;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;QT_DLL;QT_NO_DEBUG;NDEBUG;QT_CORE_LIB;QT_GUI_LIB;QT_OPENGL_LIB;QT_OPENGLEXTENSIONS_LIB;QT_WIDGETS_LIB;%(PreprocessorDefinitions);H5_BUILT_AS_DYNAMIC_LIB;</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtOpenGL;$(QTDIR)\include\QtOpenGLExtensions;$(QTDIR)\include\QtWidgets;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat />
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
@@ -98,15 +98,15 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <OutputFile>$(OutDir)\$(ProjectName).exe</OutputFile>
-      <AdditionalLibraryDirectories>$(QTDIR)\lib;%(AdditionalLibraryDirectories);;D:\Software\dlib\build\Debug</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(QTDIR)\lib;%(AdditionalLibraryDirectories);D:\Software\dlib\build2\Debug</AdditionalLibraryDirectories>
       <GenerateDebugInformation>false</GenerateDebugInformation>
-      <AdditionalDependencies>qtmain.lib;Qt5Core.lib;Qt5Gui.lib;Qt5OpenGL.lib;opengl32.lib;glu32.lib;Qt5OpenGLExtensions.lib;Qt5Widgets.lib;%(AdditionalDependencies);szip.lib;zlib.lib;hdf5.lib;hdf5_cpp.lib;dlib.lib;opencv_world320d.lib;</AdditionalDependencies>
+      <AdditionalDependencies>qtmain.lib;Qt5Core.lib;Qt5Gui.lib;Qt5OpenGL.lib;opengl32.lib;glu32.lib;Qt5OpenGLExtensions.lib;Qt5Widgets.lib;%(AdditionalDependencies);szip.lib;zlib.lib;hdf5.lib;hdf5_cpp.lib;dlib.lib;opencv_world320.lib;</AdditionalDependencies>
     </Link>
     <QtMoc>
       <OutputFile>.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</OutputFile>
       <ExecutionDescription>Moc'ing %(Identity)...</ExecutionDescription>
       <IncludePath>.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName)\.;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtOpenGL;$(QTDIR)\include\QtOpenGLExtensions;$(QTDIR)\include\QtWidgets</IncludePath>
-      <Define>UNICODE;_UNICODE;WIN32;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;QT_DLL;QT_NO_DEBUG;NDEBUG;QT_CORE_LIB;QT_GUI_LIB;QT_OPENGL_LIB;QT_OPENGLEXTENSIONS_LIB;QT_WIDGETS_LIB;%(PreprocessorDefinitions);H5_BUILT_AS_DYNAMIC_LIB</Define>
+      <Define>UNICODE;_UNICODE;WIN32;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;QT_DLL;QT_NO_DEBUG;NDEBUG;QT_CORE_LIB;QT_GUI_LIB;QT_OPENGL_LIB;QT_OPENGLEXTENSIONS_LIB;QT_WIDGETS_LIB;%(PreprocessorDefinitions);H5_BUILT_AS_DYNAMIC_LIB;</Define>
     </QtMoc>
     <QtUic>
       <ExecutionDescription>Uic'ing %(Identity)...</ExecutionDescription>
@@ -120,7 +120,6 @@
   <ItemGroup>
     <ClCompile Include="..\..\Software\dlib\dlib-19.17\dlib-19.17\dlib\all\source.cpp" />
     <ClCompile Include="bfm.cpp" />
-    <ClCompile Include="data.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainWindow.cpp" />
     <ClCompile Include="OpenGLWidget.cpp" />
@@ -141,22 +140,13 @@
     <ClInclude Include="data.h" />
     <QtMoc Include="OpenGLWidget.h" />
     <ClInclude Include="random.h" />
-    <ClInclude Include="vec3.h" />
+    <ClInclude Include="vec.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\bfm_tool.ico" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="bfm_tool.rc" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="data\shapeEV.bin" />
-    <None Include="data\shapeMU.bin" />
-    <None Include="data\shapePC.bin" />
-    <None Include="data\texEV.bin" />
-    <None Include="data\texMU.bin" />
-    <None Include="data\texPC.bin" />
-    <None Include="data\tl.bin" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

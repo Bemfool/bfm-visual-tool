@@ -57,7 +57,7 @@
      <item>
       <widget class="QLabel" name="label_5">
        <property name="text">
-        <string>0.0</string>
+        <string/>
        </property>
       </widget>
      </item>
@@ -80,7 +80,7 @@
      <item>
       <widget class="QLabel" name="label_6">
        <property name="text">
-        <string>2.0</string>
+        <string>max</string>
        </property>
       </widget>
      </item>
@@ -109,7 +109,7 @@
      <item>
       <widget class="QLabel" name="label_7">
        <property name="text">
-        <string>-10.0</string>
+        <string/>
        </property>
       </widget>
      </item>
@@ -129,7 +129,7 @@
      <item>
       <widget class="QLabel" name="label_8">
        <property name="text">
-        <string>10.0</string>
+        <string>max</string>
        </property>
       </widget>
      </item>
@@ -197,7 +197,7 @@
      <item>
       <widget class="QLabel" name="label_9">
        <property name="text">
-        <string>-10.0</string>
+        <string/>
        </property>
       </widget>
      </item>
@@ -217,7 +217,7 @@
      <item>
       <widget class="QLabel" name="label_10">
        <property name="text">
-        <string>10.0</string>
+        <string>max</string>
        </property>
       </widget>
      </item>
@@ -281,6 +281,81 @@ p, li { white-space: pre-wrap; }
       </widget>
      </item>
     </layout>
+   </widget>
+   <widget class="QLabel" name="label_12">
+    <property name="geometry">
+     <rect>
+      <x>580</x>
+      <y>340</y>
+      <width>421</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>=============== == expression PC =======================</string>
+    </property>
+   </widget>
+   <widget class="QWidget" name="horizontalLayoutWidget_5">
+    <property name="geometry">
+     <rect>
+      <x>580</x>
+      <y>360</y>
+      <width>421</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout_4">
+     <item>
+      <widget class="QLabel" name="label_13">
+       <property name="text">
+        <string>No.</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QComboBox" name="exprComboBox"/>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_14">
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QSlider" name="exprSlider">
+       <property name="minimum">
+        <number>-1000</number>
+       </property>
+       <property name="maximum">
+        <number>1000</number>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_15">
+       <property name="text">
+        <string>max</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QPushButton" name="setExprPcBtn">
+    <property name="geometry">
+     <rect>
+      <x>580</x>
+      <y>410</y>
+      <width>421</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>set texture PC</string>
+    </property>
    </widget>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>

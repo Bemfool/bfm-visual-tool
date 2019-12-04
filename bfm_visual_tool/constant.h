@@ -3,15 +3,12 @@
 
 #define USE_QT true
 
-#ifdef USE_QT == true
-#include <QDebug>
-#define OUT qDebug()
+#ifdef USE_QT
+	#include <QDebug>
+	#define bfm_out qDebug()
 #else
-#define OUT std::cout
+	#define bfm_out std::cout
 #endif
-
-#define FAIL	 -1
-#define SUCCESS 0
 
 /* camera type */
 typedef int camera_type;

@@ -1,0 +1,8 @@
+D:\database\bfm\3DMM_model\BaselFaceModel_mod.h5
+46990 93322 99 29
+68 D:\database\bfm\3DMM_model\landmark_outer.anl
+1744.327628674942 1747.838275588676 800 600
+shapeMU shapeEV shapePC
+texMU texEV texPC
+expMU expEV expPC
+faces
