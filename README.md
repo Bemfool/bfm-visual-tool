@@ -1,7 +1,3 @@
-> 更新中。。不可用。。
-
-
-
 # BFM模型可视化工具 - C++
 
 通过C++和Qt5构建的一个Basel人脸模型（Basel Face Model, BFM）的可视化工具。
