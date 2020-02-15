@@ -1,0 +1,8 @@
+D:\database\bfm\2017\model2017-1_bfm_nomouth.h5
+53149 105694 199 100
+68 D:\database\bfm\3DMM_model\landmark.anl
+1744.327628674942 1747.838275588676 800 600
+shape/model/mean shape/model/pcaVariance shape/model/pcaBasis
+color/model/mean color/model/pcaVariance color/model/pcaBasis
+expression/model/mean expression/model/pcaVariance expression/model/pcaBasis
+shape/representer/cells
